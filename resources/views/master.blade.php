@@ -12,6 +12,23 @@
     {{--  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/quartz/bootstrap.css' />  --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/morph/bootstrap.min.css" integrity="sha512-kyDHBwDW1zUgovtPHu1Bm62GpalnJLTMXBqcb05Ocbg9x/LFvHMvD1DMLXwEt3CnVFioeKWaMoPvt3Pq0iSC2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <style>
+    
+        .wrapper{
+            position: relative;
+            min-height: 100vh;
+            height: 100%;
+        }
+        .wrapper form{
+            padding-top: 100px;
+        }
+        .footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
     
 </head>
 <body>

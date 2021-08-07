@@ -27,9 +27,9 @@
             <a class="nav-link" href="#">Kids Section</a>
           </li>
         </ul>
-        <form class="d-flex container-sm col-lg-4">
+        <form action="search" method="POST" class="d-flex container-sm col-lg-4">
             <div class="input-group my-1" style="border-radius: 25px;padding-left: 25px;">
-                <input type="text" class="form-control me-sm-2" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" name="search" class="form-control me-sm-2" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-secondary my-sm-0" type="submit" id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #7b8ab8;transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg></button>
               </div>
           
