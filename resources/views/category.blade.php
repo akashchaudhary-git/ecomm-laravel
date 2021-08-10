@@ -2,7 +2,7 @@
 @section('content')
 <div class="searched-items row d-flex">
 
-    @foreach ($term as $item )
+    @foreach ($data as $item )
     <div class="item bg-white col-lg-2 col-md-4 col-sm-12">
       <a href="detail/{{ $item['id'] }}" class="text-decoration-none">
         <div class="trending-product-container ">

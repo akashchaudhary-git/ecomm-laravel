@@ -15,13 +15,11 @@
 
     <style>
         html,body{
-            background-color:#fff;
+            background-color:#e5e7ea;
             position: relative;
             height:  100%;
             margin:  0px auto;
             padding: 0px auto;
-            overflow-y: auto;
-            overflow-x: hidden;
         }
         
     
@@ -51,7 +49,6 @@
         .trending-products-section{
             display: flex;
             margin: 20px 30px;
-            overflow-x: scroll;
         }
         .list-item{
             float:left;
@@ -108,7 +105,7 @@
             bottom: 0;  --}}
         }
         .space{
-            height: 75px;
+            height: 100px;
         }
 
         .footer{
@@ -120,43 +117,14 @@
         }
 
         .display-product-image{
-            width: 500px;
-            padding: 50px;
-        }
-
-        .row.product-details{
-            margin: 100px 50px;
-        }
-
-        .img-container {
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 100px;
-            box-sizing: border-box;
-            max-height: 600px;
-        }
-        {{--  .product-details .desc{
-            box-shadow: 2px 2px 6px rgba(109,114,121,.2), -3px -2px 4px rgba(255,255,255,.2);
-            background: #f5f7fa;
-        }  --}}
-
-        .product-container{
-            box-shadow: 2px 2px 6px rgba(109,114,121,.2), -3px -2px 4px rgba(255,255,255,.2);
-            background: #f5f7fa;
-            padding:50px;
-        }
-        .product-title{
-            padding-left: 0;
-            margin-bottom: 20px;
+            width: 400px;
         }
     </style>
     
 </head>
 <body>
     <div class="wrapper">
-        {{ View::make('header') }}
+        {{ View::make('header-sign') }}
 
     
     @yield('content')

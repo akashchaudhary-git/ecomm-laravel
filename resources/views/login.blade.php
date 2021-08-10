@@ -1,8 +1,8 @@
-@extends('master')
+@extends('master-sign')
 @section("content")
-<div class="wrapper">
+<div class="form-container">
   <form action="login" method="POST" class="d-flex container justify-content-center">
-    <div class="form-group col-lg-4 col-md-8 col-sm-12">
+    <div class="login-container form-group col-lg-4 col-md-8 col-sm-12">
       @csrf
       <label class="form-label d-flex justify-content-center fs-3 mt-4">Login</label>
       <div class="form-floating mb-3 col-12">
@@ -21,6 +21,8 @@
       </div>
     </div>
   </form>
+</div>
+  
 
 
 @endsection
