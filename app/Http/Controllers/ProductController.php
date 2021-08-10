@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Cart;
 
 class ProductController extends Controller
 {
@@ -30,5 +31,17 @@ class ProductController extends Controller
         $category = $req->input('section');
         $data = Product::where('section',$category)->get();
         return view('category',['data'=>$data]); 
+    }
+    function add_to_cart(Request $req){
+        if($req->session()->has('user')){
+            
+            $cart = new Cart;
+            $cart->user_id=$req->session()->get('user')['id'];
+            $cart->product_id = $req->product_id;
+            $cart->save();
+        }else{
+            return redirect('/login');
+        }
+
     }
 }

@@ -151,6 +151,20 @@
             padding-left: 0;
             margin-bottom: 20px;
         }
+
+        .searched-items{
+            padding-bottom : 150px; 
+        }
+        .item{
+            margin:20px;
+        }
+        
+        .item:hover{
+            border-top: 1px solid rgba(90,150,148,0.1);
+            border-left:1px solid rgba(90,150,148,0.1);
+            background-color: #d9e3f1;
+            box-shadow: 5px 5px 10px rgba(55,94,148,.2),-5px -5px 10px rgba(255,255,255,.4);
+        }
     </style>
     
 </head>
