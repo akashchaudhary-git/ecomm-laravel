@@ -210,7 +210,12 @@
         .remove-btn{
             padding: 10px;
         }
-        
+        .table-container{
+            overflow-y:auto;
+            height: 450px; 
+            scrollbar-color: #90A4AE #CFD8DC;
+            scrollbar-width: thin;
+        }
     </style>
     
 </head>

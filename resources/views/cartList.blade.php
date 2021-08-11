@@ -1,3 +1,9 @@
+
+<?php 
+$sr=1;
+$total=0;
+$delivery = 100;
+?>
 @extends('master')
 @section('content')
 <div class="checkout-container bg-secondary row">
@@ -39,6 +45,55 @@
             
         @endforeach
     </div>
-    <div class="bill-info col-lg-6"></div>
+    <div class="bill-info col-lg-6">
+        <div class="container">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    <h4 class="card-title">Order summary</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                              <tr class="table-dark">
+                                <th class="text-center"  scope="col">Sr.No</th>
+                                <th class="text-center" scope="col">Item</th>
+                                <th class="text-start" scope="col">Price&nbsp;₹</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-body">
+                              
+                             
+                                @foreach ($products as $item)
+                                <tr class="table-info">
+                                    <td class="text-center">{{ $sr++ }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td class="text-left">{{ $item->price }}</td>
+                                <?php $total = $total + $item->price; ?>
+                                </tr>
+                                @endforeach
+                                <tr class="table-secondary">
+                                    <td class="text-center"></td>
+                                    <td class="text-end">Delivery</td>
+                                    <td class="text-center">{{ $delivery }}</td>
+                                </tr>
+                                <tr class="table-secondary">
+                                    <td class="text-center"></td>
+                                    <td class="text-end fw-bold fs-5">Total</td>
+                                    <td class="text-center fw-bold fs-5">{{ $total = $total + $delivery }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total d-flex justify-content-center">
+                       
+                    </div>
+                    <div class="button d-flex justify-content-between align-items-center">
+                        <h4>Total &nbsp; ₹{{ $total }}</h4> 
+                        <a href="/ordernow" class="btn btn-outline-warning text-dark">Order Now</a>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
 @endsection

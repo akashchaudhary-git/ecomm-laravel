@@ -50,18 +50,29 @@ class ProductController extends Controller
     }
 
     static function cartItem(){
-        $userID = Session::get('user')['id'];
-        return Cart::where('user_id', $userID)->count();
+        if(Session::has('user')){
+            $userID = Session::get('user')['id'];
+            return Cart::where('user_id', $userID)->count();
+
+        }else{
+            return 0;
+        }
     }
 
     function cartList(){
-        $userID = Session::get('user')['id'];
-        $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
-        ->where('cart.user_id', $userID)
-        ->select('products.*','cart.id as cartId')
-        ->get();
+        if(Session::has('user')){
 
-        return view('cartList',['products'=>$products]);
+            $userID = Session::get('user')['id'];
+            $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
+            ->where('cart.user_id', $userID)
+            ->select('products.*','cart.id as cartId')
+            ->get();
+    
+            return view('cartList',['products'=>$products]);
+        }else{
+            return redirect('login');
+        }
+
 
     }
     function removeItem($id){
@@ -69,4 +80,12 @@ class ProductController extends Controller
         return redirect('cartlist');
     }
 
+    function orderNow(){
+        $userID = Session::get('user')['id'];
+          $total = $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
+            ->where('cart.user_id', $userID)
+            ->sum('products.price');
+    
+            return view('ordernow',['total'=>$total]);
+    }
 }
