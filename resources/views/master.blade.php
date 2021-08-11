@@ -180,6 +180,30 @@
             font-size: 12px;
             font-weight:700;
         }
+        .cart-product-container{
+            height: 200px;
+            display: flex;
+            align-items: center;
+        }
+        .checkout-container{
+            padding-bottom: 150px;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+        .cart-item{
+            padding:20px;
+            box-shadow: inset 2px 2px 6px rgba(109,114,121,.2),inset -3px -2px 4px rgba(255,255,255,.2);
+            margin: 5px 0;
+            
+        }
+        .cart-items{
+            overflow-y: scroll;
+            height: 80vh;
+        }
+
+        .remove-btn{
+            padding: 10px;
+        }
     </style>
     
 </head>
