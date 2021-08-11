@@ -33,4 +33,5 @@ Route::get('search',[ProductController::class,'search']);
 Route::get('category',[ProductController::class,'section']);
 Route::post('cart',[ProductController::class,'add_to_cart']);
 Route::get('cartlist',[ProductController::class,'cartList'] );
+Route::get('removeitem/{id}',[ProductController::class,'removeItem'] );
 

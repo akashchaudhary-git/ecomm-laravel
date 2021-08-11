@@ -52,6 +52,10 @@
             display: flex;
             margin: 20px 30px;
             overflow-x: scroll;
+            scrollbar-color: #90A4AE #CFD8DC;
+            scrollbar-width: thin;
+            
+            
         }
         .list-item{
             float:left;
@@ -197,13 +201,16 @@
             
         }
         .cart-items{
-            overflow-y: scroll;
+            overflow-y: auto;
             height: 80vh;
+            scrollbar-color: #90A4AE #CFD8DC;
+            scrollbar-width: thin;
         }
 
         .remove-btn{
             padding: 10px;
         }
+        
     </style>
     
 </head>
