@@ -119,6 +119,20 @@
         .display-product-image{
             width: 400px;
         }
+        .cart-label{
+            height: 22px;
+            width: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #ee5d56;
+            position: absolute;
+            right: -12px;
+            top: -2px;
+            font-size: 12px;
+            font-weight:700;
+        }
     </style>
     
 </head>

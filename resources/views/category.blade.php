@@ -3,7 +3,7 @@
 <div class="searched-items row d-flex">
 
     @foreach ($data as $item )
-    <div class="item bg-white col-lg-2 col-md-4 col-sm-12">
+    <div class="item bg-white col-lg-3 col-md-6 col-sm-12">
       <a href="detail/{{ $item['id'] }}" class="text-decoration-none">
         <div class="trending-product-container ">
           <img src="{{ $item['product_image'] }}" alt="" class="trending-product-image">

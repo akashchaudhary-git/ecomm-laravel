@@ -1,9 +1,18 @@
+<?php
+  use App\Http\Controllers\ProductController;
+  $total = 0;
+
+  if(Session::has('user')){
+    $total = ProductController::cartItem();
+  }
+?>
+
 {{--
   |-----------------------------------------------------------------
   |   Navbar
   |-----------------------------------------------------------------
 --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand fs-3 fw-bold" href="/">BuyKart</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +36,7 @@
             <a class="nav-link" href="#">Kids Section</a>
           </li>
         </ul>
-        <form action="/search" method="GET" class="d-flex container-sm col-lg-6">
+        <form action="/search" method="get" class="d-flex container-sm col-lg-5">
             <div class="input-group my-1" style="border-radius: 25px;padding-left: 25px;">
                 
               <input type="text" name="term" class="form-control me-sm-2" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -35,9 +44,14 @@
               </div>
           
         </form>
-        <ul class="navbar-nav col-lg-2 justify-content-center align-items-center">
+        <ul class="navbar-nav col-lg-3 d-flex justify-content-around align-items-center">
             <li class="nav-item">
-                <a class="cart nav-link d-flex justify-content-center" href="/cart">Cart &nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: #fff;transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></a>
+                <a class="cart nav-link d-flex justify-content-center align-items-center" href="/cart" style="position:relative;">Cart &nbsp;
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: #fff;transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle>
+                
+                  </svg>
+                  <span class="cart-label bg-warning text-dark">{{ $total }}</span>
+                </a>
             </li>
             
         </ul>
