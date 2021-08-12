@@ -34,5 +34,9 @@ Route::get('category',[ProductController::class,'section']);
 Route::post('cart',[ProductController::class,'add_to_cart']);
 Route::get('cartlist',[ProductController::class,'cartList'] );
 Route::get('removeitem/{id}',[ProductController::class,'removeItem'] );
-Route::get('ordernow',[ProductController::class,'orderNow'] );
+Route::post('ordernow',[ProductController::class,'orderNow'] );
+Route::post('processpayment',[ProductController::class,'processPayment'] );
+Route::get('ordernow',function(){
+    return redirect('cartlist');
+} );
 

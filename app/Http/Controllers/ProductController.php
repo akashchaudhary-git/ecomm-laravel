@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -63,12 +64,19 @@ class ProductController extends Controller
         if(Session::has('user')){
 
             $userID = Session::get('user')['id'];
+            $delivery = 500;
             $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
             ->where('cart.user_id', $userID)
             ->select('products.*','cart.id as cartId')
             ->get();
+            $total =  DB::table('cart')->join('products','cart.product_id','=','products.id')
+            ->where('cart.user_id', $userID)
+            ->sum('products.price');
     
-            return view('cartList',['products'=>$products]);
+            return view('cartList')
+            ->with('products',$products)
+            ->with('delivery',$delivery)
+            ->with('total',$total);
         }else{
             return redirect('login');
         }
@@ -80,12 +88,42 @@ class ProductController extends Controller
         return redirect('cartlist');
     }
 
-    function orderNow(){
-        $userID = Session::get('user')['id'];
-          $total = $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
-            ->where('cart.user_id', $userID)
-            ->sum('products.price');
+    function orderNow(Request $req){
+        if(Session::has('user')){
+
+                $total = $req->total;
+                $delivery = $req->delivery;
+                // $userID = Session::get('user')['id'];
+                // $delivery = 500;
+                // $total = $products = DB::table('cart')->join('products','cart.product_id','=','products.id')
+                // ->where('cart.user_id', $userID)
+                // ->sum('products.price');
     
-            return view('ordernow',['total'=>$total]);
+                return view('ordernow')->with('total',$total)->with('delivery', $delivery);
+        }else{
+            return redirect('login');
+        }
+    }
+
+    function processPayment(Request $req){
+        $userID = Session::get('user')['id'];
+        // return $req->input();
+        $address = 'Name: '.$req->name.' Address: '.$req->address.' Pincode: '.$req->pincode.
+        ' Contact: '.$req->phone;
+
+        $cartItems = Cart::where('user_id',$userID)->get();
+        foreach($cartItems as $item){
+            $order = new Order;
+            $order->product_id = $item['product_id'];
+            $order->user_id = $item['user_id'];
+            $order->payment_method = $req->payment;
+            $order->status = "pending";
+            $order->payment_status = "pending";
+            $order->address =$address;
+            $order->save();
+            Cart::where('user_id',$userID)->delete();
+        }
+        
+        return redirect('/');   
     }
 }

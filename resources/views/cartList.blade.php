@@ -1,8 +1,6 @@
 
 <?php 
 $sr=1;
-$total=0;
-$delivery = 100;
 ?>
 @extends('master')
 @section('content')
@@ -49,7 +47,7 @@ $delivery = 100;
         <div class="container">
             <div class="card bg-light mb-3">
                 <div class="card-header">
-                    <h4 class="card-title">Order summary</h4>
+                    <h4 class="card-title">Cart summary</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-container">
@@ -69,7 +67,7 @@ $delivery = 100;
                                     <td class="text-center">{{ $sr++ }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td class="text-left">{{ $item->price }}</td>
-                                <?php $total = $total + $item->price; ?>
+                                
                                 </tr>
                                 @endforeach
                                 <tr class="table-secondary">
@@ -88,11 +86,17 @@ $delivery = 100;
                     <div class="total d-flex justify-content-center">
                        
                     </div>
-                    <div class="button d-flex justify-content-between align-items-center">
-                        <h4>Total &nbsp; ₹{{ $total }}</h4> 
-                        <a href="/ordernow" class="btn btn-outline-warning text-dark">Order Now</a>
-                    </div>
+                    <form action="/ordernow" method="post">
+                        @csrf
+                        <div class="button d-flex justify-content-between align-items-center">
+                            <h4>Total &nbsp; ₹{{ $total }}</h4>
+                            <input type="hidden" name="total" value="{{ $total }}"> 
+                            <input type="hidden" name="delivery" value="{{ $delivery }}"> 
+                            <button type="submit" class="btn btn-outline-warning text-dark">Order Now</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
         </div>
     </div>
 </div>
