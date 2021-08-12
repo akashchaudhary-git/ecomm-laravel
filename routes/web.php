@@ -36,6 +36,7 @@ Route::get('cartlist',[ProductController::class,'cartList'] );
 Route::get('removeitem/{id}',[ProductController::class,'removeItem'] );
 Route::post('ordernow',[ProductController::class,'orderNow'] );
 Route::post('processpayment',[ProductController::class,'processPayment'] );
+Route::get('myorders',[ProductController::class,'myOrders'] );
 Route::get('ordernow',function(){
     return redirect('cartlist');
 } );

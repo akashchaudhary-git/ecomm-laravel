@@ -61,7 +61,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ Session::get('user')['name'] }}</a>
               <div class="dropdown-menu" style="">
-                <a class="dropdown-item" href="#">Order history</a>
+                <a class="dropdown-item" href="/myorders">Order history</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout">Log out</a>
